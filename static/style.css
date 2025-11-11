@@ -1,26 +1,82 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-}
-
-h1 {
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 8px;
+    font-family: "Arial", "Helvetica", "sans-serif";
+    color: #FFFFFA;
+    background-color: #12130F;
 }
 
 button {
-    background-color: #dc3545;
-    color: white;
+    color: #FFFFFA
+}
+
+h1, h2{
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    /* space bitween them */
+    gap: 10px;
+}
+
+#input-todo {
+    width: 250px;
+    height: 25px;
+    font-size: 1.25rem;
+}
+
+#add-todo {
+    border-radius: 4px;
     border: none;
-    padding: 5px 10px;
+    background-color: #4E937A;
     cursor: pointer;
+    transition: 0.5s ease;
+}
+#add-todo:hover{
+    background-color: green;
+    padding: 1.1% 1.1% 1.1% 1.1%;
+}
+
+.todo-container {
+    margin: auto;
+    width: 80vw;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-items{
+    background-color: #998DA0;
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-radius: 10px;
+
+    /* padding for left and right */
+    padding: 0px 10px;
+}
+
+/* form inside actions */
+.actions > form{
+    display: inline;
+}
+
+.actions > form > button {
+    border-radius: 6px;
+    background-color: #912F40;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    transition: 0.5s ease;
+
+}
+
+.actions > form > button:hover{
+    background-color: red;
+    transform: scale(0.99);
 }

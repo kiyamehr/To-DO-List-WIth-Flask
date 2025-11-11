@@ -8,30 +8,30 @@
 </head>
 
 <body>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                <input type="checkbox" id="{{ loop.index }}" name="taskCheckbox" value="{{ loop.index }}">
-                <label for="{{ loop.index }}">{{ task }}</label>
-                
-                {%if "Completed" in task%}
-                    <button type="button" onclick="deleteTask({{loop.index}})">Delete</button>
-                {% endif %}
-                </li>
-        {% endfor %}
-    </ul>
-
-    <script> 
-        function deleteTask(index) {
-            document.getElementById('taskCheckbox-' + index).checked = false;
-            document.forms[0].submit()
-        }
-    </script>
-    
-    <form method="POST" action="{{ url_for('add_task') }}"> 
-        <label for="newTask"> Add Task: </label>
-        <input type="text" id="newTask", name="newTask" required>
-        <button type="submit">Add</button>
+    <h1>Kiamehr's To-Do List</h1>
+    <form action="{{url_for("home")}}" class="input-container" method="POST">
+        <input type="text" placeholder="Enter Task" id="input-todo" name="todo_name">
+        <button id="add-todo">Add</button>
     </form>
+
+    <h2>Tasks</h2>
+    
+    <div class="todo-container">
+        {% for task in tasks %}
+            <div class="todo-items">
+                <p>{{task.name}}</p>
+                <div class="actions">
+                    <form action="{{url_for("checked_todo", todo_id=task.id)}}" method="POST">
+                        <input type="checkbox" {% if task.checked == True %}checked{% endif %} onchange="this.form.submit()">
+                    </form>
+    
+                    <form action="{{url_for("delete_todo", todo_id=task.id)}}" method="POST">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+            
+
 </body>
-</html>
